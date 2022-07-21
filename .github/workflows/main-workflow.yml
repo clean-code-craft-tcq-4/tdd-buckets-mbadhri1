@@ -31,4 +31,4 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Run Specs
-        run: sudo npm run test
+        run: npm run test
