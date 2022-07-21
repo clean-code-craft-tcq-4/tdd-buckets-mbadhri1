@@ -29,6 +29,5 @@ jobs:
           path: ./coverage
           retention-days: 21
 
-      # Runs a set of commands using the runners shell
       - name: Run Specs
         run: npm run test
