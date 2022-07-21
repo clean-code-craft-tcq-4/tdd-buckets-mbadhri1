@@ -44,5 +44,5 @@ function rangeFormatter(ranges) {
 module.exports = {
   sort,
   findRanges,
+  rangeFormatter,
 };
-rangeFormatter(findRanges(sort([3, 3, 5, 7, 8, 9, 11, 12, 13])));
