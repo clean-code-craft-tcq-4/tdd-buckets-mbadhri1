@@ -1,5 +1,5 @@
 const {expect} = require('chai');
-const {findRanges, sort} = require('../range-finder');
+const {findRanges, sort, atodbitconverter, bitConverter} = require('../range-finder');
 
 it('should sort the values', () => {
   const input = [4, 2, 3, 1];
@@ -55,7 +55,7 @@ it(' for  array with n different non continous element', () => {
 });
 
 it(' for  array with n different continous and non continous element', () => {
-  const input = [3, 3, 5, 4, 10, 11, 12];
+  const input = [3, 3, 5, 4, 11, 9, 10, 13, 7, 17, 1, -1, -3];
   expect(findRanges(sort(input))).to.deep.equal([
     {
       continousCount: 4,
@@ -64,8 +64,43 @@ it(' for  array with n different continous and non continous element', () => {
     },
     {
       continousCount: 3,
-      max: 12,
-      min: 10,
+      max: 11,
+      min: 9,
+    },
+  ]);
+});
+
+it('should convert 12 bit sensor empty array value ', () => {
+  const input = [];
+  expect(atodbitconverter(input)).to.deep.equal([]);
+});
+
+it('should convert bit to value ', () => {
+  expect(bitConverter(12)).to.deep.equal(4096);
+});
+
+it('should convert 10 bit sensor array value ', () => {
+  const input = [0, 1024, 512];
+  expect(atodbitconverter(input)).to.deep.equal([-15, 15, 0]);
+});
+
+it('should convert 12 bit sensor array value ', () => {
+  const input = [0, 1024, 512, 1146];
+  expect(atodbitconverter(input, 12, 0, 10)).to.deep.equal([0, 3, 1, 3]);
+});
+
+it('should convert 12 bit sensor array value ', () => {
+  const input = [0, 1024, 512, 1146, 1500];
+  expect(findRanges(sort(atodbitconverter(input, 12, 0, 10)))).to.deep.equal([
+    {
+      continousCount: 2,
+      max: 1,
+      min: 0,
+    },
+    {
+      continousCount: 3,
+      max: 4,
+      min: 3,
     },
   ]);
 });
