@@ -37,7 +37,7 @@ function printHeader() {
 function rangeFormatter(ranges) {
   printHeader();
   ranges.forEach((range) => {
-    console.log(`${range.min}-${range.max} ${range.continousCount}`);
+    console.log(`${range.min}-${range.max}, ${range.continousCount}`);
   });
 }
 
