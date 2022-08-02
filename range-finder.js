@@ -33,7 +33,6 @@ function printHeader() {
   console.log('Range, Readings');
 }
 
-
 function rangeFormatter(ranges) {
   printHeader();
   ranges.forEach((range) => {
@@ -41,26 +40,9 @@ function rangeFormatter(ranges) {
   });
 }
 
-
-function atodbitconverter(input, bitValue = 10, minAmp = -15, maxAmp = 15) {
-  const minReading = 0;
-  const maxReading = bitConverter(bitValue);
-  return input.map(
-      (value) =>
-        Math.round(((value - minReading) * (maxAmp - minAmp)) / (maxReading - minReading) + minAmp),
-
-  );
-}
-
-function bitConverter(bit) {
-  return Math.pow(2, bit);
-}
-
 module.exports = {
   sort,
   findRanges,
   rangeFormatter,
-  atodbitconverter,
-  bitConverter,
 };
-// rangeFormatter(findRanges(sort([3, 3, 5, 7, 8, 9, 11, 12, 13])));
+rangeFormatter(findRanges(sort([3, 3, 5, 7, 8, 9, 11, 12, 13])));
