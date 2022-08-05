@@ -10,7 +10,10 @@ function findRanges(sortedInput) {
   let continousCount = 1;
   const ranges = [];
   sortedInput.forEach((element, index) => {
-    const difference = sortedInput[index + 1] - sortedInput[index];
+    const difference = findDifference(
+        sortedInput[index + 1],
+        sortedInput[index],
+    );
     if ([0, 1].includes(difference)) {
       maxContinous = index + 1;
       continousCount++;
@@ -38,6 +41,12 @@ function rangeFormatter(ranges) {
   ranges.forEach((range) => {
     console.log(`${range.min}-${range.max}, ${range.continousCount}`);
   });
+}
+
+function findDifference(number1, number2) {
+  if (number1 !== undefined || number2 != undefined) {
+    return number1-number2;
+  }
 }
 
 module.exports = {
