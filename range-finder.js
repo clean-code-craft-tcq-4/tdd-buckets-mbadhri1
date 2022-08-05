@@ -10,8 +10,7 @@ function findRanges(sortedInput) {
   let continousCount = 1;
   const ranges = [];
   sortedInput.forEach((element, index) => {
-    const difference = sortedInput[index + 1] - sortedInput[index];
-    if ([0, 1].includes(difference)) {
+    if (sortedInput[index + 1] && [0, 1].includes(sortedInput[index + 1] - sortedInput[index])) {
       maxContinous = index + 1;
       continousCount++;
     } else {
